@@ -1,0 +1,17 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username:
+  password:
+
+development:
+  <<: *default
+  database: warheim_development
+test:
+  <<: *default
+  database: warheim_test
+production:
+  <<: *default
+  database: warheim_production

@@ -1,0 +1,25 @@
+
+# This line is related to our Angular app, not to our
+# HomeCtrl specifically. This is basically how we tell
+# Angular about the existence of our application.
+@warheim = angular.module('warheim', ['ngRoute'])
+
+# This routing directive tells Angular about the default
+# route for our application. The term "otherwise" here
+# might seem somewhat awkward, but it will make more
+# sense as we add more routes to our application.
+@warheim.config(['$routeProvider', ($routeProvider) ->
+  $routeProvider.
+    when('/creatures', {
+      templateUrl: '<%= asset_path("creatures/index.html") %>',
+      controller: 'CreaturesIndexCtrl'
+    }).
+    when('/creatures/:id', {
+      templateUrl: '<%= asset_path("creatures/show.html.haml") %>',
+      controller: 'CreaturesShowCtrl'
+    }).
+    otherwise({
+      templateUrl: '<%= asset_path("home.html") %>',
+      controller: 'HomeCtrl'
+    })
+])

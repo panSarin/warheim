@@ -1,0 +1,16 @@
+.container-fluid
+  .row
+    .col-md-2
+      Szukaj: 
+      %input{"ng-model" => "query"}
+      %select{"ng-model" => "orderProp"}
+        %option{value: 'name'}
+          Nazwa
+        %option{value: 'race_id'}
+          Rasa
+
+    .col-md-10
+      %ul
+        %li{"ng-repeat"=>"creature in creatures | filter: query | orderBy: orderProp"}
+          %a{ "ng-click"=>"viewCreature(creature.id)"}
+            {{ creature.name }}
